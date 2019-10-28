@@ -1,0 +1,15 @@
+---
+title: "Big Data Ignite R Markdown"
+output: html_document
+---
+
+## Welcome to the Big Data Ignite RMarkdown example!
+
+Here we will show how amazingly simple and useful our workflow is!
+
+We can now plot the increasing awesomeness of this talk:
+
+```{r pressure, echo=FALSE}
+curve(exp, xlim=c(0,40),main = "Awesomeness of Presentation", ylab = "Awesome Units", xlab = "Time (minutes)")
+```
+

@@ -1,0 +1,53 @@
+---
+title: "Big Data Test"
+author: "Sidney Hann"
+date: \`r params$date `\
+output: 
+  html_document:
+    theme: cerulean
+    highlight: tango
+    toc: true
+    number_sections: true
+    fig.width: 7
+params:
+    date: !r format(Sys.time(), "%d %B, %Y")
+---
+
+Above is the YAML, using the `params` option to set the date.
+
+## Global Settings
+
+This next code chunk is visible in our RMarkdown document and within this code chunk the options for `knitr` will be set up. Since the option for the code chunk is `include=FALSE` this code chunk will not be printed in our final knitted report.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Set Up Library
+
+Using the `library` statement we can load the tidyverse. This will allow us to use pipes, `%>%` to subset our code and make it look cleaner. 
+
+```{r load-libs, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+## Load Data
+
+This next code chunk will use a dataset, `Excitement`, to showcase the ability of RMarkdown to encorperate code, output, and Markdown to generate a easily readable, and reproducable report.
+
+```{r load-data}
+Excitement <- read.csv(file = "Excite.csv")
+```
+
+## Make a Plot of Satisfaction by Length of Presentation in Minutes
+
+```{r Satisfaction-Plot}
+Excitement %>% 
+  ggplot(mapping = aes(x=Length_of_Presentation, y=Satisfaction_From_Presentation2)) + #our aes statement will tell R which variables we would like on each axis
+  geom_point() + #geom_point is used to make the scatterplot
+  xlab("Length of Presentation in Minutes") +
+  ylab("Satisfaction Level of the Audience") + #xlab and ylab are used to make our axis more readable
+  ggtitle("Plot of Satisfaction by Length of Presentation in Minutes")
+```
+
+

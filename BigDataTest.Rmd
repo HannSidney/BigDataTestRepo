@@ -1,8 +1,8 @@
 ---
 title: "Big Data Test"
 author: "Sidney Hann"
-date: \`r params$date `\
-output: 
+date: /`r params$date `/ 
+output:
   html_document:
     theme: cerulean
     highlight: tango
@@ -29,6 +29,7 @@ Using the `library` statement we can load the tidyverse. This will allow us to u
 
 ```{r load-libs, message=FALSE, warning=FALSE}
 library(tidyverse)
+library(knitr)
 ```
 
 ## Load Data
@@ -39,15 +40,45 @@ This next code chunk will use a dataset, `Excitement`, to showcase the ability o
 Excitement <- read.csv(file = "Excite.csv")
 ```
 
-## Make a Plot of Satisfaction by Length of Presentation in Minutes
+## Make a Plot of Satisfaction by Length of Presentation in Minutes With Code Showing
 
 ```{r Satisfaction-Plot}
 Excitement %>% 
-  ggplot(mapping = aes(x=Length_of_Presentation, y=Satisfaction_From_Presentation2)) + #our aes statement will tell R which variables we would like on each axis
+  ggplot(mapping = aes(x=Length_of_Presentation, y=Satisfaction_From_Presentation)) + #our aes statement will tell R which variables we would like on each axis
   geom_point() + #geom_point is used to make the scatterplot
   xlab("Length of Presentation in Minutes") +
-  ylab("Satisfaction Level of the Audience") + #xlab and ylab are used to make our axis more readable
+  ylab("Satisfaction Level of the Audience (Satistfaction units)") + #xlab and ylab are used to make our axis more readable
   ggtitle("Plot of Satisfaction by Length of Presentation in Minutes")
 ```
 
 
+## Make a Plot of Satisfaction by Length of Presentation in Minutes Without Code Showing (echo = FALSE)
+
+```{r Satisfaction-Plot2, echo=FALSE}
+Excitement %>% 
+  ggplot(mapping = aes(x=Length_of_Presentation, y=Satisfaction_From_Presentation)) + #our aes statement will tell R which variables we would like on each axis
+  geom_point() + #geom_point is used to make the scatterplot
+  xlab("Length of Presentation in Minutes") +
+  ylab("Satisfaction Level of the Audience (Satistfaction units)") + #xlab and ylab are used to make our axis more readable
+  ggtitle("Plot of Satisfaction by Length of Presentation in Minutes")
+```
+
+
+## Knitting
+
+So now you have your RMarkdown code laid out. What to do now?
+
+KNIT!
+
+As Rachel mentioned, there are three ways to do this:
+
+  1. Click the "Knit" button
+  
+  2. Press Ctrl+Shift+K
+  
+  3. With the code `knitr::render("inputfile.Rmd")
+  
+  
+```{r knit, echo=FALSE}
+#rmarkdown::render("BigDataTest.Rmd")
+```

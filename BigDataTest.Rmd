@@ -29,7 +29,6 @@ Using the `library` statement we can load the tidyverse. This will allow us to u
 
 ```{r load-libs, message=FALSE, warning=FALSE}
 library(tidyverse)
-library(knitr)
 ```
 
 ## Load Data
@@ -44,7 +43,7 @@ Excitement <- read.csv(file = "Excite.csv")
 
 ```{r Satisfaction-Plot}
 Excitement %>% 
-  ggplot(mapping = aes(x=Length_of_Presentation, y=Satisfaction_From_Presentation)) + #our aes statement will tell R which variables we would like on each axis
+  ggplot(mapping = aes(x=Length_of_Presentation, y=Satisfaction_From_Presentation_Real)) + #our aes statement will tell R which variables we would like on each axis
   geom_point() + #geom_point is used to make the scatterplot
   xlab("Length of Presentation in Minutes") +
   ylab("Satisfaction Level of the Audience (Satistfaction units)") + #xlab and ylab are used to make our axis more readable
@@ -56,7 +55,7 @@ Excitement %>%
 
 ```{r Satisfaction-Plot2, echo=FALSE}
 Excitement %>% 
-  ggplot(mapping = aes(x=Length_of_Presentation, y=Satisfaction_From_Presentation)) + #our aes statement will tell R which variables we would like on each axis
+  ggplot(mapping = aes(x=Length_of_Presentation, y=Satisfaction_From_Presentation_Real)) + #our aes statement will tell R which variables we would like on each axis
   geom_point() + #geom_point is used to make the scatterplot
   xlab("Length of Presentation in Minutes") +
   ylab("Satisfaction Level of the Audience (Satistfaction units)") + #xlab and ylab are used to make our axis more readable
@@ -76,7 +75,7 @@ As Rachel mentioned, there are three ways to do this:
   
   2. Press Ctrl+Shift+K
   
-  3. With the code `knitr::render("inputfile.Rmd")
+  3. With the code `rmarkdown::render("inputfile.Rmd")
   
   
 ```{r knit, echo=FALSE}

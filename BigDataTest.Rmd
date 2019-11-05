@@ -43,7 +43,7 @@ Excitement <- read.csv(file = "Excite.csv")
 
 ```{r Satisfaction-Plot}
 Excitement %>% 
-  ggplot(mapping = aes(x=Length_of_Presentation, y=Satisfaction_From_Presentation)) + #our aes statement will tell R which variables we would like on each axis
+  ggplot(mapping = aes(x=Length_of_Presentation, y=Satisfaction_From_Presentation_Real)) + #our aes statement will tell R which variables we would like on each axis
   geom_point() + #geom_point is used to make the scatterplot
   xlab("Length of Presentation in Minutes") +
   ylab("Satisfaction Level of the Audience (Satistfaction units)") + #xlab and ylab are used to make our axis more readable
